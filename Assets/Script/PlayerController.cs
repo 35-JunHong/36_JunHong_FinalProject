@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     float moveSpeed = 5.0f;
     float rotateSpeed = 250f;
 
+    public GameObject bulletPrefab;
+    public GameObject bulletSpawn;
+
     public Animator playerAnim;
     private Rigidbody rb;
 
@@ -48,6 +51,11 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             playerAnim.SetTrigger("trigJump");
+        }
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
+            playerAnim.SetTrigger("trigSingle");
         }
     }
 }
